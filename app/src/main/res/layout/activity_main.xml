@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    app:showDividers="middle"
+    app:divider="@drawable/line_diver_gray"
+    app:dividerPadding="15dp">
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/tv_recyleview_elementary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="recyleview基本用法"
+        android:padding="15dp"/>
+    <TextView
+        android:id="@+id/tv_recyleview_diver"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="recyleview添加分割线"
+        android:padding="15dp"/>
+    <TextView
+        android:id="@+id/tv_recyleview_drafting"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="recyleview拖拽动画"
+        android:padding="15dp"/>
+
+</android.support.v7.widget.LinearLayoutCompat>
