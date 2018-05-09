@@ -65,6 +65,10 @@ public class RVElementaryAdapter extends RecyclerView.Adapter<RVElementaryAdapte
         notifyDataSetChanged();
     }
 
+    public String getData(int position) {
+        return data.get(position);
+    }
+
     public class ElementaryViewHolder extends RecyclerView.ViewHolder{
         private TextView tv;
         public ElementaryViewHolder(View itemView) {
@@ -101,12 +105,24 @@ public class RVElementaryAdapter extends RecyclerView.Adapter<RVElementaryAdapte
 
     public void addData(int position){
         data.add(position,"additem"+position);
-		notifyDataSetChanged();
-//        notifyItemInserted(position);
+        heights.add(position,(int) Math.max(200,Math.random()*600));
+        notifyItemInserted(position);
+
+        // 加入如下代码保证position的位置正确性
+        if (position != data.size() - 1) {
+            notifyItemRangeChanged(position, data.size() - position);
+        }
+//		notifyDataSetChanged();
     }
     public void removeData(int position){
         data.remove(position);
-        notifyDataSetChanged();
-//        notifyItemRemoved(position);
+        heights.remove(position);
+        notifyItemRemoved(position);
+
+        // 加入如下代码保证position的位置正确性
+        if (position != data.size() - 1) {
+            notifyItemRangeChanged(position, data.size() - position);
+        }
+//        notifyDataSetChanged();
     }
 }

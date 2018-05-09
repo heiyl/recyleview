@@ -2,6 +2,7 @@ package com.materialdesign.heiyl.recyleview;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -88,6 +89,9 @@ public class RVElementaryActivity extends AppCompatActivity implements RVElement
         linearLayoutManager = new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false);
 
         recyleview.setLayoutManager(linearLayoutManager);
+
+        // 设置item动画
+        recyleview.setItemAnimator(new DefaultItemAnimator());
 
         adapter = new RVElementaryAdapter(data);
         rvElementaryStaggerdGridAdapter = new RVElementaryStaggerdGridAdapter(data);
