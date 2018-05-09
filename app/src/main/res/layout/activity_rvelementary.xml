@@ -6,31 +6,18 @@
     android:layout_height="match_parent"
     tools:context=".RVElementaryActivity">
 
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:popupTheme="@style/ToolbarPopupTheme"
+        app:titleTextAppearance="@style/ToolbarTitle" />
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyleview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="48dp"/>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:orientation="horizontal"
-        android:layout_alignParentBottom="true"
-        android:background="#dfdfdf">
-        <TextView
-            android:id="@+id/tv_layout_manager"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="切换布局效果"/>
-        <TextView
-            android:id="@+id/tv_add"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="添加条目"/>
-    </LinearLayout>
+        android:layout_below="@id/toolbar"
+        android:layout_marginBottom="48dp" />
 </RelativeLayout>
