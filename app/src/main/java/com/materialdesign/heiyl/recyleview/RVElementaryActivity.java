@@ -112,6 +112,12 @@ public class RVElementaryActivity extends AppCompatActivity implements RVElement
         Toast.makeText(this,"当前点击的条目为" + data.get(position),Toast.LENGTH_SHORT).show();
     }
 
+    @Override
+    public void onItemLongClick(int position) {
+        Toast.makeText(this,"长按删除条目" + position,Toast.LENGTH_SHORT).show();
+        delData(position);
+    }
+
     /**
      *切换布局效果
      */
@@ -142,7 +148,11 @@ public class RVElementaryActivity extends AppCompatActivity implements RVElement
     }
 
     private void delData(int position){
-        adapter.removeData(position);
+        if(position < data.size()){
+            adapter.removeData(position);
+        }else{
+            Toast.makeText(this,"删除的条目不存在!",Toast.LENGTH_SHORT).show();
+        }
     }
 
     private void initData(){

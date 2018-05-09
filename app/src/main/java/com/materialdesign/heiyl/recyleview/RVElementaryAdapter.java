@@ -52,6 +52,7 @@ public class RVElementaryAdapter extends RecyclerView.Adapter<RVElementaryAdapte
         holder.tv.setBackgroundColor(Color.rgb(100, (int)(Math.random()*255), (int)(Math.random()*255)));
         if(itemClickListener != null) {
             holder.tv.setOnClickListener(new MyClickListener(position));
+            holder.tv.setOnLongClickListener(new MyLongClickListener(position));
         }
     }
 
@@ -60,13 +61,13 @@ public class RVElementaryAdapter extends RecyclerView.Adapter<RVElementaryAdapte
         return data == null? 0 :data.size();
     }
 
+    /**
+     * 设置视图模式
+     * @param viewType
+     */
     public void setViewType(int viewType) {
         this.viewType = viewType;
         notifyDataSetChanged();
-    }
-
-    public String getData(int position) {
-        return data.get(position);
     }
 
     public class ElementaryViewHolder extends RecyclerView.ViewHolder{
@@ -78,17 +79,50 @@ public class RVElementaryAdapter extends RecyclerView.Adapter<RVElementaryAdapte
     }
 
     /**
+     * 添加条目
+     * @param position
+     */
+    public void addData(int position){
+        data.add(position,"additem"+position);
+        heights.add(position,(int) Math.max(200,Math.random()*600));
+        notifyItemInserted(position);
+
+        // 加入如下代码保证position的位置正确性
+        if (position != data.size() - 1) {
+            //列表从positionStart位置到itemCount数量的列表项进行数据刷新
+            notifyItemRangeChanged(position, data.size() - position);
+        }
+//		notifyDataSetChanged();
+    }
+
+    /**
+     * 移除条目
+     * @param position
+     */
+    public void removeData(int position){
+        data.remove(position);
+        heights.remove(position);
+        notifyItemRemoved(position);
+
+        // 加入如下代码保证position的位置正确性
+        if (position != data.size() - 1) {
+            //列表从positionStart位置到itemCount数量的列表项进行数据刷新
+            notifyItemRangeChanged(position, data.size() - position);
+        }
+//        notifyDataSetChanged();
+    }
+
+    /**
      * 设置点击事件
      */
     private ItemClickListener itemClickListener;
     public void setOnItemClickListener(ItemClickListener itemClickListener){
         this.itemClickListener = itemClickListener;
     }
-
     public interface ItemClickListener{
         void onItemClick(int position);
+        void onItemLongClick(int position);
     }
-
     /**
      * 条目的点击事件
      */
@@ -103,26 +137,19 @@ public class RVElementaryAdapter extends RecyclerView.Adapter<RVElementaryAdapte
         }
     }
 
-    public void addData(int position){
-        data.add(position,"additem"+position);
-        heights.add(position,(int) Math.max(200,Math.random()*600));
-        notifyItemInserted(position);
-
-        // 加入如下代码保证position的位置正确性
-        if (position != data.size() - 1) {
-            notifyItemRangeChanged(position, data.size() - position);
+    /**
+     * 条目的点击事件
+     */
+    public class MyLongClickListener implements View.OnLongClickListener{
+        int position;
+        MyLongClickListener(int position){
+            this.position = position;
         }
-//		notifyDataSetChanged();
-    }
-    public void removeData(int position){
-        data.remove(position);
-        heights.remove(position);
-        notifyItemRemoved(position);
 
-        // 加入如下代码保证position的位置正确性
-        if (position != data.size() - 1) {
-            notifyItemRangeChanged(position, data.size() - position);
+        @Override
+        public boolean onLongClick(View v) {
+            itemClickListener.onItemLongClick(position);
+            return true;
         }
-//        notifyDataSetChanged();
     }
 }
