@@ -52,6 +52,8 @@ public class RVElementaryAdapter extends RecyclerView.Adapter<RVElementaryAdapte
         holder.tv.setBackgroundColor(Color.rgb(100, (int)(Math.random()*255), (int)(Math.random()*255)));
         if(itemClickListener != null) {
             holder.tv.setOnClickListener(new MyClickListener(position));
+        }
+        if(itemLongClickListener != null) {
             holder.tv.setOnLongClickListener(new MyLongClickListener(position));
         }
     }
@@ -112,12 +114,20 @@ public class RVElementaryAdapter extends RecyclerView.Adapter<RVElementaryAdapte
 //        notifyDataSetChanged();
     }
 
+
+    private ItemClickListener itemClickListener;
+    private ItemClickListener itemLongClickListener;
     /**
      * 设置点击事件
      */
-    private ItemClickListener itemClickListener;
     public void setOnItemClickListener(ItemClickListener itemClickListener){
         this.itemClickListener = itemClickListener;
+    }
+    /**
+     * 设置长按点击事件
+     */
+    public void setOnItemLongClickListener(ItemClickListener itemLongClickListener){
+        this.itemLongClickListener = itemLongClickListener;
     }
     public interface ItemClickListener{
         void onItemClick(int position);
@@ -138,7 +148,7 @@ public class RVElementaryAdapter extends RecyclerView.Adapter<RVElementaryAdapte
     }
 
     /**
-     * 条目的点击事件
+     * 条目的长按事件
      */
     public class MyLongClickListener implements View.OnLongClickListener{
         int position;
@@ -148,7 +158,7 @@ public class RVElementaryAdapter extends RecyclerView.Adapter<RVElementaryAdapte
 
         @Override
         public boolean onLongClick(View v) {
-            itemClickListener.onItemLongClick(position);
+            itemLongClickListener.onItemLongClick(position);
             return true;
         }
     }

@@ -22,7 +22,6 @@ public class RVElementaryActivity extends AppCompatActivity implements RVElement
 
     private RecyclerView recyleview;
     private RVElementaryAdapter adapter;
-    private RVElementaryStaggerdGridAdapter rvElementaryStaggerdGridAdapter;
     private List<String> data = new ArrayList<>();
     private GridLayoutManager gridLayoutManager;
     private GridLayoutManager horizontalGridLayoutManager;
@@ -31,6 +30,8 @@ public class RVElementaryActivity extends AppCompatActivity implements RVElement
     private Toolbar toolbar;
 
     private int currentViewType = Constnats.VIEW_TYPE_LISTVIEW;
+    private DividerItemDecoration dividerItemDecoration;
+    private DividerGridViewItemDecoration dividerGridViewItemDecoration;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,7 +78,9 @@ public class RVElementaryActivity extends AppCompatActivity implements RVElement
             }
         });
 
-        recyleview = this.findViewById(R.id.recyleview);
+        dividerItemDecoration = new DividerItemDecoration(this, LinearLayoutManager.HORIZONTAL, R.drawable.line_diver_gray);
+        dividerGridViewItemDecoration = new DividerGridViewItemDecoration(this,R.drawable.grid_diver_gray);
+
         //LayoutManager布局摆放管理器(线性摆放、瀑布流)
         //九宫格布局管理
         gridLayoutManager = new GridLayoutManager(this,3);
@@ -88,17 +91,20 @@ public class RVElementaryActivity extends AppCompatActivity implements RVElement
         //线性布局管理：reverseLayout:数据倒置，水平布局从右边开始滑动 垂直布局
         linearLayoutManager = new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false);
 
+        recyleview = this.findViewById(R.id.recyleview);
+        //设置布局管理器
         recyleview.setLayoutManager(linearLayoutManager);
-        recyleview.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.HORIZONTAL, R.drawable.line_diver_gray));
-
-        // 设置item动画
+        //添加分割线
+        recyleview.addItemDecoration(dividerItemDecoration);
+        // //设置Item增加、移除动画
         recyleview.setItemAnimator(new DefaultItemAnimator());
-
+        //设置adapter
         adapter = new RVElementaryAdapter(data);
-        rvElementaryStaggerdGridAdapter = new RVElementaryStaggerdGridAdapter(data);
-
-        adapter.setOnItemClickListener(this);
         recyleview.setAdapter(adapter);
+        //设置条目的点击事件
+        adapter.setOnItemClickListener(this);
+        //设置条目的长按事件
+        adapter.setOnItemLongClickListener(this);
 //        recyleview.setAdapter(rvElementaryStaggerdGridAdapter);
     }
 
@@ -124,21 +130,23 @@ public class RVElementaryActivity extends AppCompatActivity implements RVElement
      */
     private void changeView(){
         adapter.setViewType(currentViewType);
+        recyleview.removeItemDecoration(dividerItemDecoration);
+        recyleview.removeItemDecoration(dividerGridViewItemDecoration);
         switch (currentViewType){
             case Constnats.VIEW_TYPE_LISTVIEW:
-                recyleview.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.HORIZONTAL, R.drawable.line_diver_gray));
+                recyleview.addItemDecoration(dividerItemDecoration);
                 recyleview.setLayoutManager(linearLayoutManager);
                 break;
             case Constnats.VIEW_TYPE_GRIDVIEW:
-                recyleview.addItemDecoration(new DividerGridViewItemDecoration(this,R.drawable.grid_diver_gray));
+                recyleview.addItemDecoration(dividerGridViewItemDecoration);
                 recyleview.setLayoutManager(gridLayoutManager);
                 break;
             case Constnats.VIEW_TYPE_HORIZONTALGRIDVEW:
-                recyleview.addItemDecoration(new DividerGridViewItemDecoration(this,R.drawable.grid_diver_gray));
+                recyleview.addItemDecoration(dividerGridViewItemDecoration);
                 recyleview.setLayoutManager(horizontalGridLayoutManager);
                 break;
             case Constnats.VIEW_TYPE_STAGGEREDGRIDVIEW:
-                recyleview.addItemDecoration(new DividerGridViewItemDecoration(this,R.drawable.grid_diver_gray));
+                recyleview.addItemDecoration(dividerGridViewItemDecoration);
                 recyleview.setLayoutManager(staggeredGridLayoutManager);
                 break;
         }
