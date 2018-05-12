@@ -1,4 +1,4 @@
-package com.materialdesign.heiyl.recyleview;
+package com.materialdesign.heiyl.recyleview.diver;
 
 import android.content.Context;
 import android.content.res.TypedArray;

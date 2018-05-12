@@ -1,4 +1,4 @@
-package com.materialdesign.heiyl.recyleview;
+package com.materialdesign.heiyl.recyleview.commons;
 
 public class Constnats {
     public static final int VIEW_TYPE_LISTVIEW = 0;

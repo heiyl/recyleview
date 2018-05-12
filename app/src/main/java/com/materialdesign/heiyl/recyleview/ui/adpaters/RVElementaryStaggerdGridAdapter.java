@@ -1,4 +1,4 @@
-package com.materialdesign.heiyl.recyleview;
+package com.materialdesign.heiyl.recyleview.ui.adpaters;
 
 import android.graphics.Color;
 import android.support.annotation.NonNull;

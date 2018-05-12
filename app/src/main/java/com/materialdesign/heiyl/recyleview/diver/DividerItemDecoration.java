@@ -1,4 +1,4 @@
-package com.materialdesign.heiyl.recyleview;
+package com.materialdesign.heiyl.recyleview.diver;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -125,5 +125,10 @@ public class DividerItemDecoration extends RecyclerView.ItemDecoration {
                 canvas.drawRect(left, top, right, bottom, mPaint);
             }
         }
+    }
+
+    @Override
+    public void onDrawOver(Canvas c, RecyclerView parent, RecyclerView.State state) {
+        super.onDrawOver(c, parent, state);
     }
 }

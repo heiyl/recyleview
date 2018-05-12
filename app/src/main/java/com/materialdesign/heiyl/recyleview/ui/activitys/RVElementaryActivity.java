@@ -1,4 +1,4 @@
-package com.materialdesign.heiyl.recyleview;
+package com.materialdesign.heiyl.recyleview.ui.activitys;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -12,13 +12,19 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.materialdesign.heiyl.recyleview.commons.Constnats;
+import com.materialdesign.heiyl.recyleview.R;
+import com.materialdesign.heiyl.recyleview.ui.adpaters.RVElementaryAdapter;
+import com.materialdesign.heiyl.recyleview.diver.DividerGridViewItemDecoration;
+import com.materialdesign.heiyl.recyleview.diver.DividerItemDecoration;
+
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * recyleview基本用法
  */
-public class RVElementaryActivity extends AppCompatActivity implements RVElementaryAdapter.ItemClickListener{
+public class RVElementaryActivity extends AppCompatActivity implements RVElementaryAdapter.ItemClickListener {
 
     private RecyclerView recyleview;
     private RVElementaryAdapter adapter;

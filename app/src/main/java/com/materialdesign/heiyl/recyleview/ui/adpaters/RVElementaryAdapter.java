@@ -1,4 +1,4 @@
-package com.materialdesign.heiyl.recyleview;
+package com.materialdesign.heiyl.recyleview.ui.adpaters;
 
 import android.graphics.Color;
 import android.support.annotation.NonNull;
@@ -7,6 +7,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import com.materialdesign.heiyl.recyleview.commons.Constnats;
 
 import java.util.ArrayList;
 import java.util.List;

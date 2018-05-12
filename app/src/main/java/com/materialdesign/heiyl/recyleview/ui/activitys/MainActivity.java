@@ -1,10 +1,12 @@
-package com.materialdesign.heiyl.recyleview;
+package com.materialdesign.heiyl.recyleview.ui.activitys;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+
+import com.materialdesign.heiyl.recyleview.R;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
