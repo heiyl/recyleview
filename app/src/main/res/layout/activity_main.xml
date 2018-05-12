@@ -21,6 +21,7 @@
         android:id="@+id/tv_recyleview_diver"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:visibility="gone"
         android:text="recyleview添加分割线"
         android:padding="15dp"/>
     <TextView
