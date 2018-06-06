@@ -25,10 +25,10 @@
         android:text="recyleview添加分割线"
         android:padding="15dp"/>
     <TextView
-        android:id="@+id/tv_recyleview_drafting"
+        android:id="@+id/tv_recyleview_head"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="recyleview拖拽动画"
+        android:text="recyleview添加头部和底部"
         android:padding="15dp"/>
 
 </android.support.v7.widget.LinearLayoutCompat>

@@ -17,6 +17,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.activitys.RVElementaryActivity" />
+        <activity android:name=".ui.activitys.RVHeaderActivity"></activity>
     </application>
 
 </manifest>
