@@ -1,16 +1,31 @@
+/*
+    apply plugin:应用了一个插件，一般有两种值可选：
+    1、com.android.application 表示这是一个应用程序模块
+    2、com.android.library 表示这是一颗库模块
+    两个最大的区别是：一个可以之间运行，一个只能作为代码库依附于别的应用程序模块来运行。
+*/
 apply plugin: 'com.android.application'
 
-android {
-    compileSdkVersion 27
-    defaultConfig {
+android {//在这个android闭包中我们可以配置项目构建的各种属性。
+    compileSdkVersion 27//用于指定项目的编译版本
+    buildToolsVersion "27.0.3"  //用于指定项目构建工具的版本
+    defaultConfig {//在这个defaultConfig闭包中可以对项目的更多细节进行配置。
+        //用于指定项目的包名，在后面修改时在这里修改
         applicationId "com.materialdesign.heiyl.recyleview"
+        //用于指定项目最低兼容的android系统版本
         minSdkVersion 14
+        //指定的值表示你在该目标版本上已经做过了充分的测试，系统将会为你的应用程序启用一些最新的功能和特性
         targetSdkVersion 27
+        //用于指定项目的版本号
         versionCode 1
+        //用于指定项目的版本名
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
     }
+    //在这buildTypes闭包中用于指定生成安装文件的相关配置，通常只会有两个子闭包，一个debug，一个是release
+    //1.debug闭包用于指定生成测试版安装文件的配置（这个闭包可以忽略不写）
+    //2.release闭包用于指定生成正式版安装文件的配置
     buildTypes {
         release {
             minifyEnabled false
@@ -20,7 +35,15 @@ android {
     sourceSets { main { res.srcDirs = ['src/main/res', 'src/main/res/menu'] } }
 }
 
+/**
+ 这个dependencies闭包可以指定当前项目所有的依赖关系。
+ 通常android studio 项目共有3种依赖方式1.本地依赖 2.库依赖 3.远程依赖
+ 1.本地依赖可以对本地的jar包或目录添加依赖关系
+ 2.库依赖可以对项目中的库模块添加依赖关系
+ 3.远程依赖则可以对jcenter库上的开源项目添加依赖关系
+ */
 dependencies {
+    //这是一个本地依赖声明，它表示将libs目录下所有.jar后缀的文件都添加到项目的构建路径当中
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'com.android.support:appcompat-v7:27.1.1'
     implementation 'com.android.support.constraint:constraint-layout:1.1.0'

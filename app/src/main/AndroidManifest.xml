@@ -17,7 +17,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.activitys.RVElementaryActivity" />
-        <activity android:name=".ui.activitys.RVHeaderActivity"></activity>
+        <activity android:name=".ui.activitys.RVHeaderActivity"/>
+        <activity android:name=".ui.activitys.RVTouchActivity"></activity>
     </application>
 
 </manifest>

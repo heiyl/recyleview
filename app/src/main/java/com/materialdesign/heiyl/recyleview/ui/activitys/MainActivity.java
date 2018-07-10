@@ -40,6 +40,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(intent);
                 break;
             case R.id.tv_recyleview_diver://recyleview添加分割线
+                Intent intent3 = new Intent();
+                intent3.setClass(MainActivity.this,RVTouchActivity.class);
+                startActivity(intent3);
                 break;
             case R.id.tv_recyleview_head://recyleview添加头部和底部
                 Intent intent2 = new Intent();
